@@ -10,10 +10,8 @@ body {
     font-family: "Microsoft JhengHei", sans-serif;
     margin: 0;
     background: #f6f3ff;
-    color: #000;
 }
 
-/* 主卡片 */
 .container {
     max-width: 900px;
     margin: 40px auto;
@@ -23,7 +21,6 @@ body {
     overflow: hidden;
 }
 
-/* 頭部 */
 .header {
     text-align: center;
     padding: 30px 20px;
@@ -33,41 +30,8 @@ body {
 .header img {
     width: 120px;
     border-radius: 50%;
-    border: 5px solid #dcd2ff;
 }
 
-.header h1 {
-    margin: 10px 0 5px;
-    color: #6a5acd;
-}
-
-.header p {
-    margin: 5px 0;
-}
-
-/* 區塊 */
-.section {
-    padding: 20px 30px;
-    border-bottom: 1px solid #eee;
-}
-
-.section h2 {
-    color: #6a5acd;
-    border-left: 6px solid #b39ddb;
-    padding-left: 10px;
-}
-
-/* 技能 */
-.skills span {
-    display: inline-block;
-    background: #b39ddb;
-    color: white;
-    padding: 6px 12px;
-    border-radius: 20px;
-    margin: 5px 5px 0 0;
-}
-
-/* 按鈕 */
 .btn {
     margin-top: 10px;
     padding: 10px 20px;
@@ -77,95 +41,39 @@ body {
     border-radius: 5px;
     cursor: pointer;
 }
-
-.btn:hover {
-    background: #9575cd;
-}
-
-/* 興趣 */
-.hobby {
-    font-weight: bold;
-}
-
-/* 手機版 */
-@media (max-width:600px){
-    .container {
-        margin: 10px;
-    }
-}
 </style>
 </head>
 
 <body>
 
 <div class="container">
-
     <div class="header">
-        <img src="images/照片.jpg">
         <h1>呂家宜</h1>
-        <p>亞洲大學｜學號：AU114024078</p>
-        <p>Email:114024078@live.asia.edu.tw｜電話：0912-345-678</p>
+        <p>亞洲大學｜資傳系</p>
 
-        <!-- 原本下載按鈕 -->
-        <button class="btn" onclick="window.print()">下載履歷</button>
-
-        <!-- 👉 新增：播放音樂按鈕 -->
-        <button class="btn" onclick="playMusic()">播放背景音樂</button>
+        <button class="btn" onclick="unmuteMusic()">開啟音樂聲音</button>
     </div>
-
-    <div class="section">
-        <h2>自我介紹</h2>
-        <p>
-        我是亞洲大學資傳系的學生，個性細心且負責，對設計與多媒體充滿興趣。
-        平時喜歡透過練習與實作提升自己的能力，並持續學習新的技能，
-        希望未來能在設計相關領域發展。
-        </p>
-    </div>
-
-    <div class="section">
-        <h2>學歷</h2>
-        <p>亞洲大學｜資傳系（2025 - 2029）</p>
-    </div>
-
-    <div class="section">
-        <h2>技能</h2>
-        <div class="skills">
-            <span>PPT製作</span>
-            <span>Photoshop</span>
-            <span>Illustrator</span>
-        </div>
-    </div>
-
-    <div class="section">
-        <h2>專案經驗</h2>
-        <p>個人履歷網站（HTML / CSS / JavaScript）</p>
-    </div>
-
-    <div class="section">
-        <h2>興趣</h2>
-        <p class="hobby">旅遊、吃美食、攝影</p>
-    </div>
-
 </div>
 
-<!-- 原本播放器（保留） -->
-<audio controls loop>
+<!-- 🎵 自動播放音樂 -->
+<audio id="bgm" autoplay loop muted>
     <source src="music.mp3" type="audio/mpeg">
-    你的瀏覽器不支援音樂播放
 </audio>
-
-<audio id="bgm" loop>
-  <source src="music.MP3" type="audio/mpeg">
-</audio>
-
-<button class="btn" onclick="playMusic()">播放背景音樂</button>
 
 <script>
-function playMusic() {
-  const audio = document.getElementById("bgm");
-  audio.play()
-    .then(() => console.log("播放成功"))
-    .catch(err => console.log("播放失敗:", err));
+const audio = document.getElementById("bgm");
+
+// 嘗試自動播放（有些瀏覽器還是會擋）
+window.addEventListener("load", () => {
+    audio.play().catch(() => {
+        console.log("自動播放被阻擋");
+    });
+});
+
+// 點擊後開聲音
+function unmuteMusic() {
+    audio.muted = false;
+    audio.play();
 }
 </script>
 
