@@ -75,6 +75,7 @@ body {
     color: white;
     border: none;
     border-radius: 5px;
+    cursor: pointer;
 }
 
 .btn:hover {
@@ -104,7 +105,12 @@ body {
         <h1>呂家宜</h1>
         <p>亞洲大學｜學號：AU114024078</p>
         <p>Email:114024078@live.asia.edu.tw｜電話：0912-345-678</p>
+
+        <!-- 原本下載按鈕 -->
         <button class="btn" onclick="window.print()">下載履歷</button>
+
+        <!-- 👉 新增：播放音樂按鈕 -->
+        <button class="btn" onclick="playMusic()">播放背景音樂</button>
     </div>
 
     <div class="section">
@@ -144,27 +150,27 @@ body {
 
 <!-- 原本播放器（保留） -->
 <audio controls loop>
-    <source src="audio/music.MP3" type="audio/mpeg">
+    <source src="audio/music.mp3" type="audio/mpeg">
     你的瀏覽器不支援音樂播放
 </audio>
 
-<!-- 背景音樂（自動播放版本） -->
-<audio id="bgm" autoplay loop muted playsinline>
-  <source src="music.MP3" type="audio/mpeg">
+<!-- 背景音樂 -->
+<audio id="bgm" loop>
+  <source src="audio/music.mp3" type="audio/mpeg">
 </audio>
 
 <script>
+// 👉 使用者點擊按鈕播放
+function playMusic() {
   const audio = document.getElementById("bgm");
+  audio.play();
+}
 
-  // 嘗試解除靜音（最接近自動播放有聲音）
-  setTimeout(() => {
-    audio.muted = false;
-    audio.volume = 1;
-
-    audio.play().catch(() => {
-      console.log("瀏覽器阻擋自動播放");
-    });
-  }, 500);
+// 👉 點擊畫面任何地方也可以播放（加分體驗）
+document.addEventListener("click", function () {
+  const audio = document.getElementById("bgm");
+  audio.play();
+}, { once: true });
 </script>
 
 </body>
