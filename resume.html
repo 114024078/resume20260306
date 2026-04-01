@@ -1,101 +1,98 @@
 <!DOCTYPE html>
 <html lang="zh-TW">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>個人履歷 - AU114024078</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>個人履歷</title>
 
-    <style>
-        body {
+<style>
+body {
     font-family: "Microsoft JhengHei", sans-serif;
     margin: 0;
-    background: #f7f4ff; /* 淺紫背景 */
-    color: #000; /* 文字改黑 */
+    background: #f6f3ff;
+    color: #000;
 }
 
-/* 主容器 */
+/* 主卡片 */
 .container {
-    display: flex;
-    max-width: 1000px;
-    margin: 30px auto;
+    max-width: 900px;
+    margin: 40px auto;
     background: #ffffff;
     border-radius: 15px;
+    box-shadow: 0 8px 25px rgba(120, 90, 200, 0.15);
     overflow: hidden;
-    box-shadow: 0 5px 20px rgba(120, 90, 200, 0.15);
 }
 
-/* 左側欄 */
-.sidebar {
-    width: 35%;
-    background: #e6e0ff; /* 淺紫 */
-    padding: 20px;
+/* 頭部 */
+.header {
     text-align: center;
+    padding: 30px 20px;
+    background: linear-gradient(135deg, #e6e0ff, #f3efff);
 }
 
-.sidebar h2 {
-    color: #000;
-}
-
-/* 大頭照外框 */
-.profile-img {
-    width: 140px;
-    height: 140px;
+.header img {
+    width: 120px;
     border-radius: 50%;
-    border: 5px solid #d1c4ff;
+    border: 5px solid #dcd2ff;
 }
 
-/* 小標題 */
-.section-title {
-    background: #d1c4ff;
-    padding: 5px 10px;
-    border-radius: 20px;
-    display: inline-block;
-    margin: 15px 0 10px;
-    font-size: 14px;
-    color: #000;
+.header h1 {
+    margin: 10px 0 5px;
+    color: #6a5acd;
 }
 
-/* 右側內容 */
-.main {
-    width: 65%;
-    padding: 25px;
-}
-
-/* 標題 */
-.main h1 {
-    text-align: center;
-    color: #6a5acd; /* 紫色標題 */
+.header p {
+    margin: 5px 0;
 }
 
 /* 區塊 */
-.block {
-    margin-bottom: 20px;
+.section {
+    padding: 20px 30px;
+    border-bottom: 1px solid #eee;
 }
 
-/* 工作經驗時間 */
-.timeline {
-    color: #555;
-    font-size: 14px;
+.section h2 {
+    color: #6a5acd;
+    border-left: 6px solid #b39ddb;
+    padding-left: 10px;
 }
 
-/* 進度條 */
-.bar {
-    background: #ddd;
-    border-radius: 10px;
-    overflow: hidden;
+/* 技能 */
+.skills span {
+    display: inline-block;
+    background: #b39ddb;
+    color: white;
+    padding: 6px 12px;
+    border-radius: 20px;
+    margin: 5px 5px 0 0;
 }
 
-.bar span {
-    display: block;
-    height: 8px;
-    background: #b39ddb; /* 淺紫 */
+/* 按鈕 */
+.btn {
+    margin-top: 10px;
+    padding: 10px 20px;
+    background: #b39ddb;
+    color: white;
+    border: none;
+    border-radius: 5px;
 }
 
-/* 所有文字統一黑色 */
-p, li, span {
-    color: #000;
+.btn:hover {
+    background: #9575cd;
 }
-    </style>
+
+/* 興趣 */
+.hobby {
+    font-weight: bold;
+}
+
+/* 手機版 */
+@media (max-width:600px){
+    .container {
+        margin: 10px;
+    }
+}
+</style>
 </head>
 
 <body>
@@ -103,29 +100,25 @@ p, li, span {
 <div class="container">
 
     <div class="header">
-        <img src="images/照片.jpg" alt="個人照片" style="width:120px;border-radius:50%;margin-bottom:10px;">
-        <h1 id="name">呂家宜</h1>
-        <p>亞洲大學 | 學號：AU114024078</p>
-        <p>Email:114024078@live.asia.edu.tw | 電話：0912-345-678</p>
-        <button class="btn" onclick="downloadResume()">下載履歷</button>
+        <img src="images/照片.jpg">
+        <h1>呂家宜</h1>
+        <p>亞洲大學｜學號：AU114024078</p>
+        <p>Email:114024078@live.asia.edu.tw｜電話：0912-345-678</p>
+        <button class="btn" onclick="window.print()">下載履歷</button>
     </div>
 
     <div class="section">
         <h2>自我介紹</h2>
         <p>
-            我是亞洲大學資傳系的學生，個性細心負責，喜歡嘗試不同的創作與設計。
-            平時也會主動學習新技能，提升自己的表達與設計能力，
-            希望未來能在數位設計或多媒體領域持續發展。
+        我是亞洲大學資傳系的學生，個性細心且負責，對設計與多媒體充滿興趣。
+        平時喜歡透過練習與實作提升自己的能力，並持續學習新的技能，
+        希望未來能在設計相關領域發展。
         </p>
     </div>
 
     <div class="section">
         <h2>學歷</h2>
-        <div class="item">
-            <h3>亞洲大學</h3>
-            <p>科系：資傳系</p>
-            <p>就學期間：2025 - 2029</p>
-        </div>
+        <p>亞洲大學｜資傳系（2025 - 2029）</p>
     </div>
 
     <div class="section">
@@ -139,25 +132,15 @@ p, li, span {
 
     <div class="section">
         <h2>專案經驗</h2>
-        <div class="item">
-            <h3>個人網站</h3>
-            <p>使用 HTML / CSS / JavaScript 製作個人履歷網站</p>
-        </div>
+        <p>個人履歷網站（HTML / CSS / JavaScript）</p>
     </div>
 
     <div class="section">
-        <h2>其他資訊</h2>
-        <p>興趣：旅遊、吃美食、攝影</p>
+        <h2>興趣</h2>
+        <p class="hobby">旅遊、吃美食、攝影</p>
     </div>
 
 </div>
-
-<script>
-function downloadResume() {
-    alert("建議使用 Ctrl + P → 儲存為 PDF");
-    window.print();
-}
-</script>
 
 </body>
 </html>
