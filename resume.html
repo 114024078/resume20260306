@@ -7,86 +7,94 @@
 
     <style>
         body {
-            font-family: "Microsoft JhengHei", sans-serif;
-            margin: 0;
-            background: #f6f3ff; /* 淺紫背景 */
-            color: #333;
-        }
+    font-family: "Microsoft JhengHei", sans-serif;
+    margin: 0;
+    background: #f7f4ff; /* 淺紫背景 */
+    color: #000; /* 文字改黑 */
+}
 
-        .container {
-            max-width: 900px;
-            margin: 30px auto;
-            background: white;
-            padding: 30px;
-            border-radius: 15px;
-            box-shadow: 0 5px 20px rgba(120, 90, 200, 0.15);
-        }
+/* 主容器 */
+.container {
+    display: flex;
+    max-width: 1000px;
+    margin: 30px auto;
+    background: #ffffff;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 5px 20px rgba(120, 90, 200, 0.15);
+}
 
-        .header {
-            text-align: center;
-            border-bottom: 2px solid #eee;
-            padding-bottom: 20px;
-        }
+/* 左側欄 */
+.sidebar {
+    width: 35%;
+    background: #e6e0ff; /* 淺紫 */
+    padding: 20px;
+    text-align: center;
+}
 
-        .header h1 {
-            margin: 0;
-            color: #6a5acd; /* 紫色 */
-        }
+.sidebar h2 {
+    color: #000;
+}
 
-        .header p {
-            margin: 5px 0;
-            color: #777;
-        }
+/* 大頭照外框 */
+.profile-img {
+    width: 140px;
+    height: 140px;
+    border-radius: 50%;
+    border: 5px solid #d1c4ff;
+}
 
-        .section {
-            margin-top: 25px;
-        }
+/* 小標題 */
+.section-title {
+    background: #d1c4ff;
+    padding: 5px 10px;
+    border-radius: 20px;
+    display: inline-block;
+    margin: 15px 0 10px;
+    font-size: 14px;
+    color: #000;
+}
 
-        .section h2 {
-            border-left: 5px solid #b39ddb; /* 淺紫 */
-            padding-left: 10px;
-            color: #6a5acd;
-        }
+/* 右側內容 */
+.main {
+    width: 65%;
+    padding: 25px;
+}
 
-        .item {
-            margin-bottom: 15px;
-        }
+/* 標題 */
+.main h1 {
+    text-align: center;
+    color: #6a5acd; /* 紫色標題 */
+}
 
-        .item h3 {
-            margin: 5px 0;
-        }
+/* 區塊 */
+.block {
+    margin-bottom: 20px;
+}
 
-        .skills span {
-            display: inline-block;
-            background: #b39ddb;
-            color: white;
-            padding: 6px 12px;
-            border-radius: 20px;
-            margin: 5px 5px 0 0;
-            font-size: 14px;
-        }
+/* 工作經驗時間 */
+.timeline {
+    color: #555;
+    font-size: 14px;
+}
 
-        .btn {
-            display: inline-block;
-            margin-top: 15px;
-            padding: 10px 20px;
-            background: #b39ddb;
-            color: white;
-            border-radius: 5px;
-            cursor: pointer;
-            border: none;
-        }
+/* 進度條 */
+.bar {
+    background: #ddd;
+    border-radius: 10px;
+    overflow: hidden;
+}
 
-        .btn:hover {
-            background: #9575cd;
-        }
+.bar span {
+    display: block;
+    height: 8px;
+    background: #b39ddb; /* 淺紫 */
+}
 
-        @media (max-width: 600px) {
-            .container {
-                margin: 10px;
-                padding: 20px;
-            }
-        }
+/* 所有文字統一黑色 */
+p, li, span {
+    color: #000;
+}
     </style>
 </head>
 
