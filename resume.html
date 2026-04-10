@@ -23,26 +23,53 @@ body {
     overflow: hidden;
 }
 
-/* 頭部 */
+/* 頭部（改成左右） */
 .header {
-    text-align: center;
-    padding: 30px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 30px;
     background: linear-gradient(135deg, #e6e0ff, #f3efff);
+}
+
+.left {
+    display: flex;
+    align-items: center;
 }
 
 .header img {
     width: 120px;
     border-radius: 50%;
     border: 5px solid #dcd2ff;
+    margin-right: 20px;
 }
 
-.header h1 {
-    margin: 10px 0 5px;
+.info h1 {
+    margin: 0;
     color: #6a5acd;
 }
 
-.header p {
+.info p {
     margin: 5px 0;
+}
+
+/* 按鈕區 */
+.actions {
+    display: flex;
+    gap: 10px;
+}
+
+.btn {
+    padding: 10px 20px;
+    background: #b39ddb;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.btn:hover {
+    background: #9575cd;
 }
 
 /* 區塊 */
@@ -57,7 +84,7 @@ body {
     padding-left: 10px;
 }
 
-/* 技能 */
+/* 技能 & 興趣 共用 */
 .skills span {
     display: inline-block;
     background: #b39ddb;
@@ -67,35 +94,22 @@ body {
     margin: 5px 5px 0 0;
 }
 
-/* 按鈕 */
-.btn {
-    margin-top: 10px;
-    padding: 10px 20px;
-    background: #b39ddb;
-    color: white;
-    border: none;
-    border-radius: 5px;
-}
-
-.btn:hover {
-    background: #9575cd;
-}
-
-/* 興趣 */
-.hobby {
-    font-weight: bold;
-}
-
-/* 音樂區 */
-.music {
-    text-align: center;
-    padding: 20px;
+/* 音樂隱藏 */
+audio {
+    display: none;
 }
 
 /* 手機版 */
 @media (max-width:600px){
-    .container {
-        margin: 10px;
+    .header {
+        flex-direction: column;
+        text-align: center;
+    }
+    .left {
+        flex-direction: column;
+    }
+    .header img {
+        margin: 0 0 10px 0;
     }
 }
 </style>
@@ -105,59 +119,73 @@ body {
 
 <div class="container">
 
+    <!-- 頭部 -->
     <div class="header">
-        <img src="images/照片.jpg">
-        <h1>呂家宜</h1>
-        <p>亞洲大學｜學號：AU114024078</p>
-        <p>Email:114024078@live.asia.edu.tw｜電話：0912-345-678</p>
-        <button class="btn" onclick="window.print()">下載履歷</button>
+        <div class="left">
+            <img src="images/照片.jpg">
+            <div class="info">
+                <h1>呂家宜</h1>
+                <p>亞洲大學｜學號：AU114024078</p>
+                <p>Email:114024078@live.asia.edu.tw｜電話：0912-345-678</p>
+            </div>
+        </div>
+
+        <div class="actions">
+            <button class="btn" onclick="window.print()">下載履歷</button>
+            <button class="btn" onclick="playMusic()">▶ 音樂</button>
+        </div>
     </div>
 
+    <!-- 個性分析 -->
     <div class="section">
-        <h2>自我介紹</h2>
-        <p>
-        我是亞洲大學資傳系的學生，個性細心且負責，對設計與多媒體充滿興趣。
-        平時喜歡透過練習與實作提升自己的能力，並持續學習新的技能，
-        希望未來能在設計相關領域發展。
-        </p>
+        <h2>個性分析</h2>
+        <div class="skills">
+            <span>樂觀面對</span>
+            <span>平易近人</span>
+            <span>善解人意</span>
+        </div>
     </div>
 
-    <div class="section">
-        <h2>學歷</h2>
-        <p>亞洲大學｜資傳系（2025 - 2029）</p>
-    </div>
-
+    <!-- 技能 -->
     <div class="section">
         <h2>技能</h2>
         <div class="skills">
             <span>PPT製作</span>
             <span>Photoshop</span>
             <span>Illustrator</span>
+            <span>Procreate</span>
         </div>
     </div>
 
+    <!-- 專案 -->
     <div class="section">
         <h2>專案經驗</h2>
         <p>個人履歷網站（HTML / CSS / JavaScript）</p>
     </div>
 
+    <!-- 興趣（改成框框） -->
     <div class="section">
         <h2>興趣</h2>
-        <p class="hobby">旅遊、吃美食、攝影</p>
+        <div class="skills">
+            <span>旅遊</span>
+            <span>吃美食</span>
+            <span>攝影</span>
+        </div>
     </div>
 
-    <!-- 🎵 音樂播放器 -->
-    <div class="music">
-        <h2>背景音樂</h2>
-        <audio controls loop>
-            <source src="audio/music.mp3" type="audio/mpeg">
-            你的瀏覽器不支援音樂播放
-        </audio>
-    </div>
-
-    
+    <!-- 音樂 -->
+    <audio id="music" loop>
+        <source src="audio/music.mp3" type="audio/mpeg">
+    </audio>
 
 </div>
+
+<script>
+function playMusic(){
+    var music = document.getElementById("music");
+    music.play();
+}
+</script>
 
 </body>
 </html>
