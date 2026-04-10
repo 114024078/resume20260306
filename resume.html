@@ -11,6 +11,7 @@
     --main-hover: #9575cd;
     --bg-gradient1: #e6e0ff;
     --bg-gradient2: #f3efff;
+    --title-color: #6a5acd;
 }
 
 body {
@@ -30,7 +31,7 @@ body {
     overflow: hidden;
 }
 
-/* 頭部（維持置中） */
+/* 頭部（置中） */
 .header {
     text-align: center;
     padding: 30px 20px;
@@ -45,14 +46,19 @@ body {
 
 .header h1 {
     margin: 10px 0 5px;
-    color: #6a5acd;
+    color: var(--title-color);
 }
 
 .header p {
     margin: 5px 0;
 }
 
-/* 按鈕列 */
+/* 英文名 */
+.eng-name {
+    color: #333;
+}
+
+/* 按鈕 */
 .button-row {
     margin-top: 15px;
 }
@@ -95,8 +101,14 @@ body {
 
 /* 音樂區 */
 .music {
-    text-align: center;
-    padding: 20px;
+    padding: 20px 30px;
+    border-top: 1px solid #eee;
+}
+
+.music h2 {
+    color: #6a5acd;
+    border-left: 6px solid var(--main-color);
+    padding-left: 10px;
 }
 
 /* 手機版 */
@@ -112,13 +124,12 @@ body {
 
 <div class="container">
 
+    <!-- 頭部 -->
     <div class="header">
         <img src="images/照片.jpg">
         <h1>呂家宜</h1>
-        <p>亞洲大學｜學號：AU114024078</p>
-        <p>Email:114024078@live.asia.edu.tw｜電話：0912-345-678</p>
+        <p class="eng-name">chia-yi Lu</p>
 
-        <!-- 👉 按鈕移到下面一行 -->
         <div class="button-row">
             <button class="btn" onclick="window.print()">下載履歷</button>
             <button class="btn" onclick="playMusic()">▶ 音樂</button>
@@ -134,6 +145,12 @@ body {
             <span>平易近人</span>
             <span>善解人意</span>
         </div>
+    </div>
+
+    <!-- 學歷 -->
+    <div class="section">
+        <h2>學歷</h2>
+        <p>亞洲大學｜資傳系</p>
     </div>
 
     <!-- 技能 -->
@@ -163,7 +180,14 @@ body {
         </div>
     </div>
 
-    <!-- 🎵 音樂（保留最底下） -->
+    <!-- 聯絡資訊 -->
+    <div class="section">
+        <h2>聯絡資訊</h2>
+        <p>Email：114024078@live.asia.edu.tw</p>
+        <p>電話：0912-345-678</p>
+    </div>
+
+    <!-- 音樂 -->
     <div class="music">
         <h2>背景音樂</h2>
         <audio id="music" controls loop>
@@ -180,22 +204,23 @@ function playMusic(){
     music.play();
 }
 
-/* 🎨 顏色切換 */
 let isPurple = true;
 
 function toggleTheme(){
     const root = document.documentElement;
 
     if(isPurple){
-        root.style.setProperty('--main-color', '#f8bbd0');   // 淺粉
+        root.style.setProperty('--main-color', '#f8bbd0');
         root.style.setProperty('--main-hover', '#f48fb1');
         root.style.setProperty('--bg-gradient1', '#ffe4ec');
         root.style.setProperty('--bg-gradient2', '#fff0f5');
+        root.style.setProperty('--title-color', '#ec407a');
     }else{
-        root.style.setProperty('--main-color', '#b39ddb');   // 紫色
+        root.style.setProperty('--main-color', '#b39ddb');
         root.style.setProperty('--main-hover', '#9575cd');
         root.style.setProperty('--bg-gradient1', '#e6e0ff');
         root.style.setProperty('--bg-gradient2', '#f3efff');
+        root.style.setProperty('--title-color', '#6a5acd');
     }
 
     isPurple = !isPurple;
