@@ -18,54 +18,64 @@ body {
     font-family: "Microsoft JhengHei", sans-serif;
     margin: 0;
     background: #f6f3ff;
-    color: #000;
 }
 
 /* 主卡片 */
 .container {
     max-width: 900px;
     margin: 40px auto;
-    background: #ffffff;
+    background: #fff;
     border-radius: 15px;
     box-shadow: 0 8px 25px rgba(120, 90, 200, 0.15);
     overflow: hidden;
 }
 
-/* 頭部（置中） */
+/* ⭐ Header 改左右版 */
 .header {
-    text-align: center;
-    padding: 30px 20px;
+    display: flex;
+    align-items: center;
+    padding: 40px;
     background: linear-gradient(135deg, var(--bg-gradient1), var(--bg-gradient2));
+    position: relative;
 }
 
+/* ⭐ 透明星星背景 */
+.header::after {
+    content: "✦ ✧ ✦ ✧ ✦ ✧";
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    font-size: 40px;
+    color: rgba(179,157,219,0.25);
+}
+
+/* 左邊照片 */
 .header img {
-    width: 120px;
+    width: 130px;
     border-radius: 50%;
-    border: 5px solid #dcd2ff;
+    border: 6px solid var(--main-color); /* ⭐會跟顏色切換 */
+    margin-right: 30px;
 }
 
-.header h1 {
-    margin: 10px 0 5px;
+/* 右邊文字 */
+.info h1 {
+    margin: 0;
     color: var(--title-color);
 }
 
-.header p {
-    margin: 5px 0;
-}
-
-/* 英文名 */
 .eng-name {
     color: #333;
+    margin: 5px 0;
 }
 
 /* 按鈕 */
 .button-row {
-    margin-top: 15px;
+    margin-top: 10px;
 }
 
 .btn {
     margin: 5px;
-    padding: 10px 20px;
+    padding: 10px 18px;
     background: var(--main-color);
     color: white;
     border: none;
@@ -89,17 +99,17 @@ body {
     padding-left: 10px;
 }
 
-/* 技能 & 興趣 */
+/* 技能 */
 .skills span {
     display: inline-block;
     background: var(--main-color);
     color: white;
     padding: 6px 12px;
     border-radius: 20px;
-    margin: 5px 5px 0 0;
+    margin: 5px;
 }
 
-/* 音樂區 */
+/* 音樂 */
 .music {
     padding: 20px 30px;
     border-top: 1px solid #eee;
@@ -113,8 +123,13 @@ body {
 
 /* 手機版 */
 @media (max-width:600px){
-    .container {
-        margin: 10px;
+    .header {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .header img {
+        margin: 0 0 15px 0;
     }
 }
 </style>
@@ -124,20 +139,36 @@ body {
 
 <div class="container">
 
-    <!-- 頭部 -->
+    <!-- Header -->
     <div class="header">
         <img src="images/照片.jpg">
-        <h1>呂家宜</h1>
-        <p class="eng-name">chia-yi Lu</p>
 
-        <div class="button-row">
-            <button class="btn" onclick="window.print()">下載履歷</button>
-            <button class="btn" onclick="playMusic()">▶ 音樂</button>
-            <button class="btn" onclick="toggleTheme()">🎨 切換顏色</button>
+        <div class="info">
+            <h1>呂家宜</h1>
+            <p class="eng-name">chia-yi Lu</p>
+
+            <div class="button-row">
+                <button class="btn" onclick="window.print()">下載履歷</button>
+                <button class="btn" onclick="playMusic()">▶ 音樂</button>
+                <button class="btn" onclick="toggleTheme()">🎨 切換顏色</button>
+            </div>
         </div>
     </div>
 
-    <!-- 個性分析 -->
+    <!-- 聯絡 -->
+    <div class="section">
+        <h2>聯絡資訊</h2>
+        <p>Email：114024078@live.asia.edu.tw</p>
+        <p>電話：0912-345-678</p>
+    </div>
+
+    <!-- 學歷 -->
+    <div class="section">
+        <h2>學歷</h2>
+        <p>亞洲大學｜資傳系</p>
+    </div>
+
+    <!-- 個性 -->
     <div class="section">
         <h2>個性分析</h2>
         <div class="skills">
@@ -145,12 +176,6 @@ body {
             <span>平易近人</span>
             <span>善解人意</span>
         </div>
-    </div>
-
-    <!-- 學歷 -->
-    <div class="section">
-        <h2>學歷</h2>
-        <p>亞洲大學｜資傳系</p>
     </div>
 
     <!-- 技能 -->
@@ -180,19 +205,11 @@ body {
         </div>
     </div>
 
-    <!-- 聯絡資訊 -->
-    <div class="section">
-        <h2>聯絡資訊</h2>
-        <p>Email：114024078@live.asia.edu.tw</p>
-        <p>電話：0912-345-678</p>
-    </div>
-
     <!-- 音樂 -->
     <div class="music">
         <h2>背景音樂</h2>
         <audio id="music" controls loop>
             <source src="audio/music.mp3" type="audio/mpeg">
-            你的瀏覽器不支援音樂播放
         </audio>
     </div>
 
@@ -200,8 +217,7 @@ body {
 
 <script>
 function playMusic(){
-    var music = document.getElementById("music");
-    music.play();
+    document.getElementById("music").play();
 }
 
 let isPurple = true;
