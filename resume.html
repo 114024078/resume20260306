@@ -30,7 +30,7 @@ body {
     overflow: hidden;
 }
 
-/* ⭐ Header 改左右版 */
+/* Header */
 .header {
     display: flex;
     align-items: center;
@@ -39,9 +39,9 @@ body {
     position: relative;
 }
 
-/* ⭐ 透明星星背景 */
+/* 星星 */
 .header::after {
-    content: "✦ ✧ ✦ ✧ ✦ ✧";
+    content: "✦ ✧ ✦ ✧ ✦";
     position: absolute;
     top: 10px;
     right: 20px;
@@ -49,15 +49,33 @@ body {
     color: rgba(179,157,219,0.25);
 }
 
-/* 左邊照片 */
+/* 🎁 小驚喜按鈕 */
+.surprise-btn {
+    position: absolute;
+    top: 60px;
+    right: 40px;
+    padding: 15px 35px;
+    border-radius: 50px;
+    background: var(--main-color);
+    color: white;
+    border: none;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.surprise-btn:hover {
+    background: var(--main-hover);
+}
+
+/* 照片 */
 .header img {
     width: 130px;
     border-radius: 50%;
-    border: 6px solid var(--main-color); /* ⭐會跟顏色切換 */
+    border: 6px solid var(--main-color);
     margin-right: 30px;
 }
 
-/* 右邊文字 */
+/* 文字 */
 .info h1 {
     margin: 0;
     color: var(--title-color);
@@ -65,7 +83,12 @@ body {
 
 .eng-name {
     color: #333;
-    margin: 5px 0;
+}
+
+/* ✨標語 */
+.tagline {
+    color: #777;
+    font-size: 14px;
 }
 
 /* 按鈕 */
@@ -91,8 +114,15 @@ body {
 .section {
     padding: 20px 30px;
     border-bottom: 1px solid #eee;
+    transition: 0.3s;
 }
 
+/* ✨滑過效果 */
+.section:hover {
+    background: #faf7ff;
+}
+
+/* 標題 */
 .section h2 {
     color: #6a5acd;
     border-left: 6px solid var(--main-color);
@@ -121,15 +151,28 @@ body {
     padding-left: 10px;
 }
 
-/* 手機版 */
+/* 📸 彈出照片 */
+.popup {
+    display: none;
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.6);
+    justify-content: center;
+    align-items: center;
+}
+
+.popup img {
+    width: 300px;
+    border-radius: 10px;
+}
+
+/* 手機 */
 @media (max-width:600px){
     .header {
         flex-direction: column;
         text-align: center;
-    }
-
-    .header img {
-        margin: 0 0 15px 0;
     }
 }
 </style>
@@ -139,13 +182,13 @@ body {
 
 <div class="container">
 
-    <!-- Header -->
     <div class="header">
         <img src="images/照片.jpg">
 
         <div class="info">
             <h1>呂家宜</h1>
             <p class="eng-name">chia-yi Lu</p>
+            <p class="tagline">設計學習者｜多媒體創作</p>
 
             <div class="button-row">
                 <button class="btn" onclick="window.print()">下載履歷</button>
@@ -153,22 +196,12 @@ body {
                 <button class="btn" onclick="toggleTheme()">🎨 切換顏色</button>
             </div>
         </div>
+
+        <!-- 🎁 小驚喜 -->
+        <button class="surprise-btn" onclick="showPopup()">小驚喜</button>
     </div>
 
-    <!-- 聯絡 -->
-    <div class="section">
-        <h2>聯絡資訊</h2>
-        <p>Email：114024078@live.asia.edu.tw</p>
-        <p>電話：0912-345-678</p>
-    </div>
-
-    <!-- 學歷 -->
-    <div class="section">
-        <h2>學歷</h2>
-        <p>亞洲大學｜資傳系</p>
-    </div>
-
-    <!-- 個性 -->
+    <!-- 其他區塊（略） -->
     <div class="section">
         <h2>個性分析</h2>
         <div class="skills">
@@ -178,7 +211,11 @@ body {
         </div>
     </div>
 
-    <!-- 技能 -->
+    <div class="section">
+        <h2>學歷</h2>
+        <p>亞洲大學｜資傳系</p>
+    </div>
+
     <div class="section">
         <h2>技能</h2>
         <div class="skills">
@@ -189,13 +226,6 @@ body {
         </div>
     </div>
 
-    <!-- 專案 -->
-    <div class="section">
-        <h2>專案經驗</h2>
-        <p>個人履歷網站（HTML / CSS / JavaScript）</p>
-    </div>
-
-    <!-- 興趣 -->
     <div class="section">
         <h2>興趣</h2>
         <div class="skills">
@@ -205,19 +235,37 @@ body {
         </div>
     </div>
 
-    <!-- 音樂 -->
+    <div class="section">
+        <h2>聯絡資訊</h2>
+        <p>Email：114024078@live.asia.edu.tw</p>
+        <p>電話：0912-345-678</p>
+    </div>
+
     <div class="music">
         <h2>背景音樂</h2>
         <audio id="music" controls loop>
-            <source src="audio/music.mp3" type="audio/mpeg">
+            <source src="audio/music.mp3">
         </audio>
     </div>
 
 </div>
 
+<!-- 📸 彈出照片 -->
+<div class="popup" id="popup" onclick="closePopup()">
+    <img src="images/照片.jpg">
+</div>
+
 <script>
 function playMusic(){
     document.getElementById("music").play();
+}
+
+function showPopup(){
+    document.getElementById("popup").style.display = "flex";
+}
+
+function closePopup(){
+    document.getElementById("popup").style.display = "none";
 }
 
 let isPurple = true;
@@ -228,14 +276,10 @@ function toggleTheme(){
     if(isPurple){
         root.style.setProperty('--main-color', '#f8bbd0');
         root.style.setProperty('--main-hover', '#f48fb1');
-        root.style.setProperty('--bg-gradient1', '#ffe4ec');
-        root.style.setProperty('--bg-gradient2', '#fff0f5');
         root.style.setProperty('--title-color', '#ec407a');
     }else{
         root.style.setProperty('--main-color', '#b39ddb');
         root.style.setProperty('--main-hover', '#9575cd');
-        root.style.setProperty('--bg-gradient1', '#e6e0ff');
-        root.style.setProperty('--bg-gradient2', '#f3efff');
         root.style.setProperty('--title-color', '#6a5acd');
     }
 
