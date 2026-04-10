@@ -6,6 +6,13 @@
 <title>個人履歷</title>
 
 <style>
+:root {
+    --main-color: #b39ddb;
+    --main-hover: #9575cd;
+    --bg-gradient1: #e6e0ff;
+    --bg-gradient2: #f3efff;
+}
+
 body {
     font-family: "Microsoft JhengHei", sans-serif;
     margin: 0;
@@ -23,45 +30,37 @@ body {
     overflow: hidden;
 }
 
-/* 頭部（改成左右） */
+/* 頭部（維持置中） */
 .header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 30px;
-    background: linear-gradient(135deg, #e6e0ff, #f3efff);
-}
-
-.left {
-    display: flex;
-    align-items: center;
+    text-align: center;
+    padding: 30px 20px;
+    background: linear-gradient(135deg, var(--bg-gradient1), var(--bg-gradient2));
 }
 
 .header img {
     width: 120px;
     border-radius: 50%;
     border: 5px solid #dcd2ff;
-    margin-right: 20px;
 }
 
-.info h1 {
-    margin: 0;
+.header h1 {
+    margin: 10px 0 5px;
     color: #6a5acd;
 }
 
-.info p {
+.header p {
     margin: 5px 0;
 }
 
-/* 按鈕區 */
-.actions {
-    display: flex;
-    gap: 10px;
+/* 按鈕列 */
+.button-row {
+    margin-top: 15px;
 }
 
 .btn {
+    margin: 5px;
     padding: 10px 20px;
-    background: #b39ddb;
+    background: var(--main-color);
     color: white;
     border: none;
     border-radius: 5px;
@@ -69,7 +68,7 @@ body {
 }
 
 .btn:hover {
-    background: #9575cd;
+    background: var(--main-hover);
 }
 
 /* 區塊 */
@@ -80,36 +79,30 @@ body {
 
 .section h2 {
     color: #6a5acd;
-    border-left: 6px solid #b39ddb;
+    border-left: 6px solid var(--main-color);
     padding-left: 10px;
 }
 
-/* 技能 & 興趣 共用 */
+/* 技能 & 興趣 */
 .skills span {
     display: inline-block;
-    background: #b39ddb;
+    background: var(--main-color);
     color: white;
     padding: 6px 12px;
     border-radius: 20px;
     margin: 5px 5px 0 0;
 }
 
-/* 音樂隱藏 */
-audio {
-    display: none;
+/* 音樂區 */
+.music {
+    text-align: center;
+    padding: 20px;
 }
 
 /* 手機版 */
 @media (max-width:600px){
-    .header {
-        flex-direction: column;
-        text-align: center;
-    }
-    .left {
-        flex-direction: column;
-    }
-    .header img {
-        margin: 0 0 10px 0;
+    .container {
+        margin: 10px;
     }
 }
 </style>
@@ -119,20 +112,17 @@ audio {
 
 <div class="container">
 
-    <!-- 頭部 -->
     <div class="header">
-        <div class="left">
-            <img src="images/照片.jpg">
-            <div class="info">
-                <h1>呂家宜</h1>
-                <p>亞洲大學｜學號：AU114024078</p>
-                <p>Email:114024078@live.asia.edu.tw｜電話：0912-345-678</p>
-            </div>
-        </div>
+        <img src="images/照片.jpg">
+        <h1>呂家宜</h1>
+        <p>亞洲大學｜學號：AU114024078</p>
+        <p>Email:114024078@live.asia.edu.tw｜電話：0912-345-678</p>
 
-        <div class="actions">
+        <!-- 👉 按鈕移到下面一行 -->
+        <div class="button-row">
             <button class="btn" onclick="window.print()">下載履歷</button>
             <button class="btn" onclick="playMusic()">▶ 音樂</button>
+            <button class="btn" onclick="toggleTheme()">🎨 切換顏色</button>
         </div>
     </div>
 
@@ -163,7 +153,7 @@ audio {
         <p>個人履歷網站（HTML / CSS / JavaScript）</p>
     </div>
 
-    <!-- 興趣（改成框框） -->
+    <!-- 興趣 -->
     <div class="section">
         <h2>興趣</h2>
         <div class="skills">
@@ -173,10 +163,14 @@ audio {
         </div>
     </div>
 
-    <!-- 音樂 -->
-    <audio id="music" loop>
-        <source src="audio/music.mp3" type="audio/mpeg">
-    </audio>
+    <!-- 🎵 音樂（保留最底下） -->
+    <div class="music">
+        <h2>背景音樂</h2>
+        <audio id="music" controls loop>
+            <source src="audio/music.mp3" type="audio/mpeg">
+            你的瀏覽器不支援音樂播放
+        </audio>
+    </div>
 
 </div>
 
@@ -184,6 +178,27 @@ audio {
 function playMusic(){
     var music = document.getElementById("music");
     music.play();
+}
+
+/* 🎨 顏色切換 */
+let isPurple = true;
+
+function toggleTheme(){
+    const root = document.documentElement;
+
+    if(isPurple){
+        root.style.setProperty('--main-color', '#f8bbd0');   // 淺粉
+        root.style.setProperty('--main-hover', '#f48fb1');
+        root.style.setProperty('--bg-gradient1', '#ffe4ec');
+        root.style.setProperty('--bg-gradient2', '#fff0f5');
+    }else{
+        root.style.setProperty('--main-color', '#b39ddb');   // 紫色
+        root.style.setProperty('--main-hover', '#9575cd');
+        root.style.setProperty('--bg-gradient1', '#e6e0ff');
+        root.style.setProperty('--bg-gradient2', '#f3efff');
+    }
+
+    isPurple = !isPurple;
 }
 </script>
 
