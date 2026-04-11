@@ -20,14 +20,15 @@ body {
     background: #f6f3ff;
 }
 
-/* 主卡片 */
+/* ⭐ A4比例 */
 .container {
-    max-width: 900px;
+    max-width: 794px;
     margin: 40px auto;
     background: #fff;
     border-radius: 15px;
     box-shadow: 0 8px 25px rgba(120, 90, 200, 0.15);
     overflow: hidden;
+    padding-bottom: 30px;
 }
 
 /* Header */
@@ -55,6 +56,16 @@ body {
     margin-right: 30px;
 }
 
+/* ⭐ 淡入動畫 */
+.header, .section, .music {
+    animation: fadeIn 0.8s ease;
+}
+
+@keyframes fadeIn {
+    from {opacity: 0; transform: translateY(10px);}
+    to {opacity: 1; transform: translateY(0);}
+}
+
 .info h1 {
     margin: 0;
     color: var(--title-color);
@@ -77,17 +88,30 @@ body {
     border: none;
     border-radius: 5px;
     cursor: pointer;
+    transition: 0.2s;
 }
 
+/* ⭐ 按鈕效果 */
 .btn:hover {
     background: var(--main-hover);
+    transform: scale(1.05);
 }
 
-/* 區塊 */
+.btn:active {
+    transform: scale(0.95);
+}
+
+/* 區塊卡片 */
 .section {
     padding: 20px;
     background: #faf9ff;
     border-radius: 10px;
+    transition: 0.3s;
+}
+
+/* ⭐ 卡片浮起 */
+.section:hover {
+    transform: translateY(-6px);
 }
 
 /* 標題 */
@@ -107,7 +131,7 @@ body {
     margin: 5px;
 }
 
-/* ⭐ 雙欄排版 */
+/* 雙欄 */
 .grid {
     display: flex;
     flex-wrap: wrap;
@@ -117,7 +141,6 @@ body {
 
 .grid .section {
     width: calc(50% - 10px);
-    box-sizing: border-box;
 }
 
 /* 音樂 */
@@ -126,13 +149,7 @@ body {
     border-top: 1px solid #eee;
 }
 
-.music h2 {
-    color: #6a5acd;
-    border-left: 6px solid var(--main-color);
-    padding-left: 10px;
-}
-
-/* ⭐ 底部線（跟著變色） */
+/* 底部線（會變色） */
 .footer-line {
     height: 5px;
     background: linear-gradient(to right, var(--main-color), var(--main-hover));
@@ -140,13 +157,7 @@ body {
     border-radius: 10px;
 }
 
-/* ✨ hover效果 */
-.section:hover {
-    transform: translateY(-5px);
-    transition: 0.3s;
-}
-
-/* 手機版 */
+/* 手機 */
 @media (max-width:600px){
     .header {
         flex-direction: column;
@@ -161,6 +172,19 @@ body {
         width: 100%;
     }
 }
+
+/* 列印A4 */
+@media print {
+    body {
+        background: white;
+    }
+    .container {
+        width: 210mm;
+        margin: 0;
+        box-shadow: none;
+        border-radius: 0;
+    }
+}
 </style>
 </head>
 
@@ -168,7 +192,6 @@ body {
 
 <div class="container">
 
-    <!-- Header -->
     <div class="header">
         <img src="images/照片.jpg">
 
@@ -185,7 +208,6 @@ body {
         </div>
     </div>
 
-    <!-- 雙欄 -->
     <div class="grid">
 
         <div class="section">
@@ -234,7 +256,6 @@ body {
 
     </div>
 
-    <!-- 音樂 -->
     <div class="music">
         <h2>背景音樂</h2>
         <audio id="music" controls loop>
@@ -242,7 +263,6 @@ body {
         </audio>
     </div>
 
-    <!-- 底部 -->
     <div class="footer-line"></div>
 
 </div>
