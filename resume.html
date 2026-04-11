@@ -30,7 +30,7 @@ body {
     overflow: hidden;
 }
 
-/* ⭐ Header 改左右版 */
+/* Header */
 .header {
     display: flex;
     align-items: center;
@@ -39,7 +39,6 @@ body {
     position: relative;
 }
 
-/* ⭐ 透明星星背景 */
 .header::after {
     content: "✦ ✧ ✦ ✧ ✦ ✧";
     position: absolute;
@@ -49,15 +48,13 @@ body {
     color: rgba(179,157,219,0.25);
 }
 
-/* 左邊照片 */
 .header img {
     width: 130px;
     border-radius: 50%;
-    border: 6px solid var(--main-color); /* ⭐會跟顏色切換 */
+    border: 6px solid var(--main-color);
     margin-right: 30px;
 }
 
-/* 右邊文字 */
 .info h1 {
     margin: 0;
     color: var(--title-color);
@@ -68,7 +65,6 @@ body {
     margin: 5px 0;
 }
 
-/* 按鈕 */
 .button-row {
     margin-top: 10px;
 }
@@ -109,6 +105,17 @@ body {
     margin: 5px;
 }
 
+/* 🎯 排版關鍵（雙欄） */
+.grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.grid .section {
+    width: calc(50% - 10px);
+}
+
 /* 音樂 */
 .music {
     padding: 20px 30px;
@@ -121,6 +128,14 @@ body {
     padding-left: 10px;
 }
 
+/* 底部紫色線 */
+.footer-line {
+    height: 5px;
+    background: linear-gradient(to right, #b39ddb, #e1bee7);
+    margin: 30px;
+    border-radius: 10px;
+}
+
 /* 手機版 */
 @media (max-width:600px){
     .header {
@@ -130,6 +145,10 @@ body {
 
     .header img {
         margin: 0 0 15px 0;
+    }
+
+    .grid .section {
+        width: 100%;
     }
 }
 </style>
@@ -156,54 +175,53 @@ body {
         </div>
     </div>
 
-    <!-- 聯絡 -->
-    <div class="section">
-        <h2>聯絡資訊</h2>
-        <p>Email：114024078@live.asia.edu.tw</p>
-        <p>電話：0912-345-678</p>
-    </div>
+    <!-- ⭐ 雙欄區塊 -->
+    <div class="grid">
 
-    <!-- 學歷 -->
-    <div class="section">
-        <h2>學歷</h2>
-        <p>亞洲大學｜資傳系</p>
-    </div>
-
-    <!-- 個性 -->
-    <div class="section">
-        <h2>個性分析</h2>
-        <div class="skills">
-            <span>樂觀面對</span>
-            <span>平易近人</span>
-            <span>善解人意</span>
+        <div class="section">
+            <h2>聯絡資訊</h2>
+            <p>Email：114024078@live.asia.edu.tw</p>
+            <p>電話：0912-345-678</p>
         </div>
-    </div>
 
-    <!-- 技能 -->
-    <div class="section">
-        <h2>技能</h2>
-        <div class="skills">
-            <span>PPT製作</span>
-            <span>Photoshop</span>
-            <span>Illustrator</span>
-            <span>Procreate</span>
+        <div class="section">
+            <h2>學歷</h2>
+            <p>亞洲大學｜資傳系</p>
         </div>
-    </div>
 
-    <!-- 專案 -->
-    <div class="section">
-        <h2>專案經驗</h2>
-        <p>個人履歷網站（HTML / CSS / JavaScript）</p>
-    </div>
-
-    <!-- 興趣 -->
-    <div class="section">
-        <h2>興趣</h2>
-        <div class="skills">
-            <span>旅遊</span>
-            <span>吃美食</span>
-            <span>攝影</span>
+        <div class="section">
+            <h2>個性分析</h2>
+            <div class="skills">
+                <span>樂觀面對</span>
+                <span>平易近人</span>
+                <span>善解人意</span>
+            </div>
         </div>
+
+        <div class="section">
+            <h2>興趣</h2>
+            <div class="skills">
+                <span>旅遊</span>
+                <span>吃美食</span>
+                <span>攝影</span>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>技能</h2>
+            <div class="skills">
+                <span>PPT製作</span>
+                <span>Photoshop</span>
+                <span>Illustrator</span>
+                <span>Procreate</span>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>專案經驗</h2>
+            <p>個人履歷網站（HTML / CSS / JavaScript）</p>
+        </div>
+
     </div>
 
     <!-- 音樂 -->
@@ -213,6 +231,9 @@ body {
             <source src="audio/music.mp3" type="audio/mpeg">
         </audio>
     </div>
+
+    <!-- 底部線 -->
+    <div class="footer-line"></div>
 
 </div>
 
@@ -242,9 +263,7 @@ function toggleTheme(){
 
     isPurple = !isPurple;
 }
-</script>
 
-<script>
 function showSurprise() {
     alert("這是小驚喜！🎉");
     window.open("images/surprise.jpg", "_blank");
