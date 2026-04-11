@@ -20,7 +20,7 @@ body {
     background: #f6f3ff;
 }
 
-/* A4 */
+/* ⭐ A4比例 */
 .container {
     max-width: 794px;
     margin: 40px auto;
@@ -56,6 +56,7 @@ body {
     margin-right: 30px;
 }
 
+/* ⭐ 淡入動畫 */
 .header, .section, .music {
     animation: fadeIn 0.8s ease;
 }
@@ -90,48 +91,56 @@ body {
     transition: 0.2s;
 }
 
+/* ⭐ 按鈕效果 */
 .btn:hover {
     background: var(--main-hover);
     transform: scale(1.05);
 }
 
+.btn:active {
+    transform: scale(0.95);
+}
+
+/* 區塊卡片 */
 .section {
     padding: 20px;
     background: #faf9ff;
     border-radius: 10px;
+    transition: 0.3s;
 }
 
-/* ⭐ 一行版 */
-.row-2 {
-    width: calc(50% - 10px);
+/* ⭐ 卡片浮起 */
+.section:hover {
+    transform: translateY(-6px);
 }
 
-/* ⭐ 一整行 */
-.row-1 {
-    width: 100%;
+/* 標題 */
+.section h2 {
+    color: #6a5acd;
+    border-left: 6px solid var(--main-color);
+    padding-left: 10px;
 }
 
-/* ⭐ 技能不換行 */
-.skills {
-    display: flex;
-    flex-wrap: nowrap;
-    gap: 8px;
-}
-
+/* 技能 */
 .skills span {
+    display: inline-block;
     background: var(--main-color);
     color: white;
     padding: 6px 12px;
     border-radius: 20px;
-    white-space: nowrap;
+    margin: 5px;
 }
 
-/* 排版 */
+/* 雙欄 */
 .grid {
     display: flex;
     flex-wrap: wrap;
     gap: 20px;
     padding: 20px 30px;
+}
+
+.grid .section {
+    width: calc(50% - 10px);
 }
 
 /* 音樂 */
@@ -140,9 +149,9 @@ body {
     border-top: 1px solid #eee;
 }
 
-/* ⭐ 底線加粗 */
+/* 底部線（會變色） */
 .footer-line {
-    height: 10px;
+    height: 5px;
     background: linear-gradient(to right, var(--main-color), var(--main-hover));
     margin: 30px;
     border-radius: 10px;
@@ -150,8 +159,30 @@ body {
 
 /* 手機 */
 @media (max-width:600px){
-    .row-2, .row-1 {
+    .header {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .header img {
+        margin: 0 0 15px 0;
+    }
+
+    .grid .section {
         width: 100%;
+    }
+}
+
+/* 列印A4 */
+@media print {
+    body {
+        background: white;
+    }
+    .container {
+        width: 210mm;
+        margin: 0;
+        box-shadow: none;
+        border-radius: 0;
     }
 }
 </style>
@@ -179,19 +210,18 @@ body {
 
     <div class="grid">
 
-        <!-- 聯絡 + 學歷 -->
-        <div class="section row-2">
+        <div class="section">
             <h2>聯絡資訊</h2>
-            <p>Email：114024078@live.asia.edu.tw｜電話：0912-345-678</p>
+            <p>Email：114024078@live.asia.edu.tw</p>
+            <p>電話：0912-345-678</p>
         </div>
 
-        <div class="section row-2">
+        <div class="section">
             <h2>學歷</h2>
             <p>亞洲大學｜資傳系</p>
         </div>
 
-        <!-- 個性 + 興趣 -->
-        <div class="section row-2">
+        <div class="section">
             <h2>個性分析</h2>
             <div class="skills">
                 <span>樂觀面對</span>
@@ -200,7 +230,7 @@ body {
             </div>
         </div>
 
-        <div class="section row-2">
+        <div class="section">
             <h2>興趣</h2>
             <div class="skills">
                 <span>旅遊</span>
@@ -209,8 +239,7 @@ body {
             </div>
         </div>
 
-        <!-- 技能 + 專案 同一行 -->
-        <div class="section row-2">
+        <div class="section">
             <h2>技能</h2>
             <div class="skills">
                 <span>PPT製作</span>
@@ -220,7 +249,7 @@ body {
             </div>
         </div>
 
-        <div class="section row-2">
+        <div class="section">
             <h2>專案經驗</h2>
             <p>個人履歷網站（HTML / CSS / JavaScript）</p>
         </div>
