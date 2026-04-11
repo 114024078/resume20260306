@@ -6,43 +6,85 @@
 <title>個人履歷</title>
 
 <style>
+:root {
+    --main-color: #b39ddb;
+    --main-hover: #9575cd;
+    --bg-gradient1: #e6e0ff;
+    --bg-gradient2: #f3efff;
+    --title-color: #6a5acd;
+}
+
 body {
     font-family: "Microsoft JhengHei", sans-serif;
     margin: 0;
     background: #f6f3ff;
-    color: #000;
 }
 
 /* 主卡片 */
 .container {
     max-width: 900px;
     margin: 40px auto;
-    background: #ffffff;
+    background: #fff;
     border-radius: 15px;
     box-shadow: 0 8px 25px rgba(120, 90, 200, 0.15);
     overflow: hidden;
 }
 
-/* 頭部 */
+/* ⭐ Header 改左右版 */
 .header {
-    text-align: center;
-    padding: 30px 20px;
-    background: linear-gradient(135deg, #e6e0ff, #f3efff);
+    display: flex;
+    align-items: center;
+    padding: 40px;
+    background: linear-gradient(135deg, var(--bg-gradient1), var(--bg-gradient2));
+    position: relative;
 }
 
+/* ⭐ 透明星星背景 */
+.header::after {
+    content: "✦ ✧ ✦ ✧ ✦ ✧";
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    font-size: 40px;
+    color: rgba(179,157,219,0.25);
+}
+
+/* 左邊照片 */
 .header img {
-    width: 120px;
+    width: 130px;
     border-radius: 50%;
-    border: 5px solid #dcd2ff;
+    border: 6px solid var(--main-color); /* ⭐會跟顏色切換 */
+    margin-right: 30px;
 }
 
-.header h1 {
-    margin: 10px 0 5px;
-    color: #6a5acd;
+/* 右邊文字 */
+.info h1 {
+    margin: 0;
+    color: var(--title-color);
 }
 
-.header p {
+.eng-name {
+    color: #333;
     margin: 5px 0;
+}
+
+/* 按鈕 */
+.button-row {
+    margin-top: 10px;
+}
+
+.btn {
+    margin: 5px;
+    padding: 10px 18px;
+    background: var(--main-color);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.btn:hover {
+    background: var(--main-hover);
 }
 
 /* 區塊 */
@@ -53,49 +95,41 @@ body {
 
 .section h2 {
     color: #6a5acd;
-    border-left: 6px solid #b39ddb;
+    border-left: 6px solid var(--main-color);
     padding-left: 10px;
 }
 
 /* 技能 */
 .skills span {
     display: inline-block;
-    background: #b39ddb;
+    background: var(--main-color);
     color: white;
     padding: 6px 12px;
     border-radius: 20px;
-    margin: 5px 5px 0 0;
+    margin: 5px;
 }
 
-/* 按鈕 */
-.btn {
-    margin-top: 10px;
-    padding: 10px 20px;
-    background: #b39ddb;
-    color: white;
-    border: none;
-    border-radius: 5px;
-}
-
-.btn:hover {
-    background: #9575cd;
-}
-
-/* 興趣 */
-.hobby {
-    font-weight: bold;
-}
-
-/* 音樂區 */
+/* 音樂 */
 .music {
-    text-align: center;
-    padding: 20px;
+    padding: 20px 30px;
+    border-top: 1px solid #eee;
+}
+
+.music h2 {
+    color: #6a5acd;
+    border-left: 6px solid var(--main-color);
+    padding-left: 10px;
 }
 
 /* 手機版 */
 @media (max-width:600px){
-    .container {
-        margin: 10px;
+    .header {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .header img {
+        margin: 0 0 15px 0;
     }
 }
 </style>
@@ -105,59 +139,117 @@ body {
 
 <div class="container">
 
+    <!-- Header -->
     <div class="header">
         <img src="images/照片.jpg">
-        <h1>呂家宜</h1>
-        <p>亞洲大學｜學號：AU114024078</p>
-        <p>Email:114024078@live.asia.edu.tw｜電話：0912-345-678</p>
-        <button class="btn" onclick="window.print()">下載履歷</button>
+
+        <div class="info">
+            <h1>呂家宜</h1>
+            <p class="eng-name">chia-yi Lu</p>
+
+            <div class="button-row">
+                <button class="btn" onclick="window.print()">下載履歷</button>
+                <button class="btn" onclick="playMusic()">▶ 音樂</button>
+                <button class="btn" onclick="toggleTheme()">🎨 切換顏色</button>
+                <button class="btn" onclick="showSurprise()">🎁 小驚喜</button>
+            </div>
+        </div>
     </div>
 
+    <!-- 聯絡 -->
     <div class="section">
-        <h2>自我介紹</h2>
-        <p>
-        我是亞洲大學資傳系的學生，個性細心且負責，對設計與多媒體充滿興趣。
-        平時喜歡透過練習與實作提升自己的能力，並持續學習新的技能，
-        希望未來能在設計相關領域發展。
-        </p>
+        <h2>聯絡資訊</h2>
+        <p>Email：114024078@live.asia.edu.tw</p>
+        <p>電話：0912-345-678</p>
     </div>
 
+    <!-- 學歷 -->
     <div class="section">
         <h2>學歷</h2>
-        <p>亞洲大學｜資傳系（2025 - 2029）</p>
+        <p>亞洲大學｜資傳系</p>
     </div>
 
+    <!-- 個性 -->
+    <div class="section">
+        <h2>個性分析</h2>
+        <div class="skills">
+            <span>樂觀面對</span>
+            <span>平易近人</span>
+            <span>善解人意</span>
+        </div>
+    </div>
+
+    <!-- 技能 -->
     <div class="section">
         <h2>技能</h2>
         <div class="skills">
             <span>PPT製作</span>
             <span>Photoshop</span>
             <span>Illustrator</span>
+            <span>Procreate</span>
         </div>
     </div>
 
+    <!-- 專案 -->
     <div class="section">
         <h2>專案經驗</h2>
         <p>個人履歷網站（HTML / CSS / JavaScript）</p>
     </div>
 
+    <!-- 興趣 -->
     <div class="section">
         <h2>興趣</h2>
-        <p class="hobby">旅遊、吃美食、攝影</p>
+        <div class="skills">
+            <span>旅遊</span>
+            <span>吃美食</span>
+            <span>攝影</span>
+        </div>
     </div>
 
-    <!-- 🎵 音樂播放器 -->
+    <!-- 音樂 -->
     <div class="music">
         <h2>背景音樂</h2>
-        <audio controls loop>
+        <audio id="music" controls loop>
             <source src="audio/music.mp3" type="audio/mpeg">
-            你的瀏覽器不支援音樂播放
         </audio>
     </div>
 
-    
-
 </div>
+
+<script>
+function playMusic(){
+    document.getElementById("music").play();
+}
+
+let isPurple = true;
+
+function toggleTheme(){
+    const root = document.documentElement;
+
+    if(isPurple){
+        root.style.setProperty('--main-color', '#f8bbd0');
+        root.style.setProperty('--main-hover', '#f48fb1');
+        root.style.setProperty('--bg-gradient1', '#ffe4ec');
+        root.style.setProperty('--bg-gradient2', '#fff0f5');
+        root.style.setProperty('--title-color', '#ec407a');
+    }else{
+        root.style.setProperty('--main-color', '#b39ddb');
+        root.style.setProperty('--main-hover', '#9575cd');
+        root.style.setProperty('--bg-gradient1', '#e6e0ff');
+        root.style.setProperty('--bg-gradient2', '#f3efff');
+        root.style.setProperty('--title-color', '#6a5acd');
+    }
+
+    isPurple = !isPurple;
+}
+</script>
+
+<script>
+function showSurprise() {
+    alert("這是小驚喜！🎉");
+    window.open("images/surprise.jpg", "_blank");
+}
+</script>
 
 </body>
 </html>
