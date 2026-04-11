@@ -85,10 +85,12 @@ body {
 
 /* 區塊 */
 .section {
-    padding: 20px 30px;
-    border-bottom: 1px solid #eee;
+    padding: 20px;
+    background: #faf9ff;
+    border-radius: 10px;
 }
 
+/* 標題 */
 .section h2 {
     color: #6a5acd;
     border-left: 6px solid var(--main-color);
@@ -105,15 +107,17 @@ body {
     margin: 5px;
 }
 
-/* 🎯 排版關鍵（雙欄） */
+/* ⭐ 雙欄排版 */
 .grid {
     display: flex;
     flex-wrap: wrap;
     gap: 20px;
+    padding: 20px 30px;
 }
 
 .grid .section {
     width: calc(50% - 10px);
+    box-sizing: border-box;
 }
 
 /* 音樂 */
@@ -128,12 +132,18 @@ body {
     padding-left: 10px;
 }
 
-/* 底部紫色線 */
+/* ⭐ 底部線（跟著變色） */
 .footer-line {
     height: 5px;
-    background: linear-gradient(to right, #b39ddb, #e1bee7);
+    background: linear-gradient(to right, var(--main-color), var(--main-hover));
     margin: 30px;
     border-radius: 10px;
+}
+
+/* ✨ hover效果 */
+.section:hover {
+    transform: translateY(-5px);
+    transition: 0.3s;
 }
 
 /* 手機版 */
@@ -175,7 +185,7 @@ body {
         </div>
     </div>
 
-    <!-- ⭐ 雙欄區塊 -->
+    <!-- 雙欄 -->
     <div class="grid">
 
         <div class="section">
@@ -232,7 +242,7 @@ body {
         </audio>
     </div>
 
-    <!-- 底部線 -->
+    <!-- 底部 -->
     <div class="footer-line"></div>
 
 </div>
